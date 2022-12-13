@@ -68,15 +68,17 @@ public class MainTresEnRaya {
 		 */
 	                        
         AnsiConsole.systemInstall();			// Activar
-		int opc = -1;
-		int resultado =0; // partida en curso
+		//int opc = -1;
+		int opc = 1;
+		int resultado =0; 		// partida en curso
+		boolean turno = true; 	// 
 		scr0 = new Ansi();
 		// creamos una partida
 		TresEnRaya partida = new TresEnRaya(scr0);
 		partida.limpiarTablero();
         partida.mostrarTablero();
 		while (opc != 0) {
-			opc = menu();		
+		/*	opc = menu();		
 		    if((opc == 1) || (opc ==2 )) {
 		        partida.movimientoJugador(opc);
 		        partida.mostrarTablero();
@@ -89,20 +91,19 @@ public class MainTresEnRaya {
 		    	  System.out.println("Opcion no valida!");
 				  opc = -1;
 		      }	
-		    // Evaluar el resultado de la partida
+		    */
+			// Lanza siguiente turno
+	        partida.movimientoJugador(opc);
+	        partida.mostrarTablero();
+	        opc = opc%2 +1;
+		    System.out.println("Jugador siguiente: " + opc);
+	        // Evaluar el resultado de la partida
 		    resultado = partida.compruebaGanador();
 		    if (resultado !=0) opc = 0;
 		    System.out.println(scr0.fg(Ansi.Color.WHITE));
 		} // while
 		// Publicar resultado de la partida
-		switch (resultado) {
-		
-		case 0:
-			System.out.println("Partida interrumpida");
-			break;
-		default:
-			System.out.println("Ganó el jugador : " + resultado);
-		}
+		if (resultado!=0)System.out.println("Ganó el jugador : " + resultado);
 		AnsiConsole.systemUninstall();// Terminar
 	}	
 }
