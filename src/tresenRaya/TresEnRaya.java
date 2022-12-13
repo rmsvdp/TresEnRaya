@@ -163,6 +163,15 @@ public class TresEnRaya {
 		marcarCelda(fi,co,ficha[Jugador-1]);
 
 	}
+	/**
+	 * comprueba el resultado de la partida, tras cada movimiento
+	 * @return 1: jugador uno ganador
+	 * 	       2: jugador dos ganador
+	 *         0: sin resolución
+	 */
+	public int compruebaGanador() {
+		return 0;
+	}
 /**
  * marcarCelda: Coloca la ficha en el tablero
  * @param fila	Fila donde colocar la ficha
@@ -174,7 +183,9 @@ public class TresEnRaya {
 		
 	tablero[fila][columna]= valor;
 		
-        }        
+        }    
+	
+	
 	public boolean posicionLibre(int fila,int columna){
         
         if (tablero[fila][columna]=='-') return true; else return false;
