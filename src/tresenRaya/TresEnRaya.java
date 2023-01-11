@@ -113,10 +113,10 @@ public class TresEnRaya {
 						colorcelda = Ansi.Color.RED;
 						break;
 					case 'O':
-						colorcelda = Ansi.Color.BLUE;
+						colorcelda = Ansi.Color.WHITE;
 						break;
 					case '-':
-						colorcelda = Ansi.Color.WHITE;
+						colorcelda = Ansi.Color.BLUE;
 					}
 				System.out.print(scr.fg(colorcelda));
 				System.out.print(celda);
@@ -133,35 +133,50 @@ public class TresEnRaya {
 	 * No está implementada la comprobación de posición válida de la ficha.
 	 * <br> Utiliza {@link TresEnRaya#marcarCelda} 
 	 * @param Jugador : Jugador que realiza el movimiento.
+	 * @return false: jugador abandona la partida
+	 * 	       true: jugada valida realizada
 	 * @author lone
 	 */	
-	public	void movimientoJugador(int Jugador) {
+	public	boolean movimientoJugador(int Jugador) {
 		
 		Scanner teclado = new Scanner( System.in);
 		int fi,co;
 		final String _filaCod ="ABC";
 		char ch;
+		boolean jugada_valida = false;
 		String entrada="";
 		System.out.println(scr.fgBrightYellow());
 		System.out.print("Mueve Jugador ");
 		System.out.println(Jugador);
+		
+	do {
 		System.out.print(scr.fg(Ansi.Color.GREEN));
-		System.out.print("\nColumna,Fila?: ");
+		System.out.print("\nEjemplo: A1, o salir:0 ? ");
 		System.out.print(scr.fg(Ansi.Color.WHITE));
 		entrada = teclado.nextLine();
-		String coord[] = entrada.split(",");
-		ch = Character.toUpperCase(coord[0].charAt(0));
-		co =_filaCod.indexOf((int) ch);
-		fi =Integer.parseInt(coord[1])-1;
-		/*
-		fi = teclado.nextInt();
-		System.out.print(scr.fg(Ansi.Color.GREEN));
-		System.out.print("\nColumna?: ");
-		System.out.print(scr.fg(Ansi.Color.WHITE));
-		co = teclado.nextInt();
-		*/
-		marcarCelda(fi,co,ficha[Jugador-1]);
-
+		if(!entrada.equals("0")){
+			entrada = entrada.charAt(0)+","+entrada.charAt(1);
+			String coord[] = entrada.split(",");
+			ch = Character.toUpperCase(coord[0].charAt(0));
+			co =_filaCod.indexOf((int) ch);
+			fi =Integer.parseInt(coord[1])-1;
+			if (tablero[fi][co] == '-') {
+				marcarCelda(fi,co,ficha[Jugador-1]);
+				jugada_valida=true;
+				}
+			else {
+				System.out.print(scr.fg(Ansi.Color.RED));
+				System.out.print("Posición ocupada, elija otro movimiento ! ");
+				System.out.print(scr.fg(Ansi.Color.WHITE));
+				jugada_valida = false;
+			}
+			} 
+			else {
+				System.out.println("El Jugador abandona la partida !");
+				return false;
+			} // equals 0
+	} while (!jugada_valida);
+		return true;
 	}
 	/**
 	 * comprueba el resultado de la partida, tras cada movimiento
@@ -185,12 +200,22 @@ public class TresEnRaya {
 		
         }    
 	
-	
+	/**
+	 * Comprueba si la posición indicada está libre
+	 * @param fila fila del tablero a consultar
+	 * @param columna columna del tablero a consultar
+	 * @return 	true : posición libre
+	 * 			false: posición ocupada
+	 */
 	public boolean posicionLibre(int fila,int columna){
         
         if (tablero[fila][columna]=='-') return true; else return false;
         }
-        int huecosLibres(){
+	/**
+	 * Retorna el número de posiciones libres existentes en el tablero
+	 * @return número de posiciones libres en el tablero
+	 */
+    private int huecosLibres(){
         int hl=0;    
         for (int i=0; i< tablero.length; i++){
             for (int j=0; j< tablero.length; j++) {

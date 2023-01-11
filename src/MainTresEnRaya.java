@@ -93,13 +93,16 @@ public class MainTresEnRaya {
 		      }	
 		    */
 			// Lanza siguiente turno
-	        partida.movimientoJugador(opc);
+	        if (partida.movimientoJugador(opc)) {
 	        partida.mostrarTablero();
 	        opc = opc%2 +1;
 		    System.out.println("Jugador siguiente: " + opc);
 	        // Evaluar el resultado de la partida
 		    resultado = partida.compruebaGanador();
-		    if (resultado !=0) opc = 0;
+	        } // movimiento realizado y comprobado
+	        else
+	        {opc=0; resultado=0;}
+	        if (resultado !=0) opc = 0;
 		    System.out.println(scr0.fg(Ansi.Color.WHITE));
 		} // while
 		// Publicar resultado de la partida
