@@ -69,8 +69,7 @@ public class MainTresEnRaya {
 		 *  	muestra la jugada
 		 *  	evalua resultado
 		 *  muestra mensaje  
-		 */
-	    
+		 */  
 			
         AnsiConsole.systemInstall();			// Activar
 		//int opc = -1;
@@ -83,20 +82,6 @@ public class MainTresEnRaya {
 		partida.limpiarTablero();
         partida.mostrarTablero();
 		while (opc != 0) {
-		/*	opc = menu();		
-		    if((opc == 1) || (opc ==2 )) {
-		        partida.movimientoJugador(opc);
-		        partida.mostrarTablero();
-		      } else if(opc==0) {
-		        opc = 0;
-		        System.out.println(scr0.fg(Ansi.Color.GREEN));
-		        System.out.println("Partida Terminada");
-		      } else {
-		    	  System.out.println(scr0.fg(Ansi.Color.RED));
-		    	  System.out.println("Opcion no valida!");
-				  opc = -1;
-		      }	
-		    */
 			// Lanza siguiente turno
 	        if (partida.movimientoJugador(opc)) {
 	        partida.mostrarTablero();

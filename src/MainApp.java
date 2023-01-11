@@ -13,7 +13,7 @@ public class MainApp {
 		boolean finSesion = false;
 		int result;
 		menuPrincipal = new Menu(opciones);
-		
+		menuPrincipal.setTitulo("JUEGOS DE TABLERO");
 		while (!finSesion) {
 			menuPrincipal.mostrarMenu();
 			result = menuPrincipal.eligeOpcion();
@@ -24,13 +24,14 @@ public class MainApp {
 					ter.lanzaPartida();
 					break;
 				case 2: // Creditos
-					System.out.println("1wet : 0486 Programación 2023");
+					System.out.println("\n1wet : 0486 Programación 2023\n");
 					break;
 				case 0: // salir aplicación
 					finSesion= true;
 				
 			} // switch
 		} // while !finSesion
+		System.out.println("\nAplicación terminada");
 
 	}
 
