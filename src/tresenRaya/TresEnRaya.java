@@ -8,7 +8,7 @@ import org.fusesource.jansi.Ansi.Color;
 /**
  *  UD3.-Programación orientada a objetos: Tres en raya
  * @author lone
- * @version 1.1
+ * @version 2.0
  * 
  * Curso 2022 - 2023
  * Programación (1WET)
