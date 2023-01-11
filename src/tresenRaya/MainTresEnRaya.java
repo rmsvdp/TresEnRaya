@@ -1,9 +1,8 @@
+package tresenRaya;
 import java.util.Scanner;
 
 import org.fusesource.jansi.Ansi;
 import org.fusesource.jansi.AnsiConsole;
-
-import tresenRaya.TresEnRaya;
 
 /**
  * Clase principal que implementa la partida, para
@@ -22,6 +21,10 @@ public class MainTresEnRaya {
 	 */
 	public static Ansi scr0;
 	
+	public MainTresEnRaya() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	/**
 	 * menú del juego, pinta en pantalla las opciones disponibles y 
 	 * solicita al jugador la elección de una ellas
@@ -54,19 +57,21 @@ public class MainTresEnRaya {
  * @see "Clase 3 en raya"
  */
 	
-	public static void main(String[] args) {
+	public void lanzaPartida() {
 		// TODO Auto-generated method stub
 		/**
 		 * Seudocódigo
 		 *  Instancia partida
 		 *  Limpia y muestra tablero
-		 *  mientras exista una opción valida
-		 *  	opcion = menu (Presenta y elige opciones de juego)
+		 *  mientras no exista ganador o o no se empate 
+		 *  no se abandone partida
 		 *  	Ejecuta turnos de jugador 1/2
-		 *  	y muestra la jugada
-		 *  	o abandona la partida  
+		 *  	muestra la jugada
+		 *  	evalua resultado
+		 *  muestra mensaje  
 		 */
-	                        
+	    
+			
         AnsiConsole.systemInstall();			// Activar
 		//int opc = -1;
 		int opc = 1;
